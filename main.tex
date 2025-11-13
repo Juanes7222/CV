@@ -1,0 +1,105 @@
+% Currículum actualizado — Juan Esteban Cardona Blandón
+\documentclass[11pt,a4paper,sans]{moderncv}
+
+% Estilo y color
+\moderncvstyle{banking}
+\moderncvcolor{blue}
+
+% Márgenes
+\usepackage[scale=0.8]{geometry}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage[export]{adjustbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage[spanish]{babel}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+\setlength{\footskip}{136.00005pt}
+
+% Datos personales
+\name{Juan Esteban}{Cardona Blandón}
+\title{Hoja de Vida}
+\photo[64pt][0.6pt]{photo}
+\address{Pereira, Colombia}{}{}
+\email{juan.cardona13@utp.edu.co}
+\extrainfo{+57 3012213085 \textbullet{} C.C. 1113858851 \textbullet{} Fecha de nacimiento: 3 de septiembre de 2004}
+
+\quote{Estudiante de Ingeniería de Sistemas en la Universidad Tecnológica de Pereira, con experiencia práctica en desarrollo de software (Python, JavaScript/TypeScript, React, Tailwind), despliegue y orquestación de contenedores (Docker, Kubernetes) y diseño digital con lenguajes HDL para FPGA. Interesado en prácticas profesionales donde pueda aportar en proyectos reales, aprender metodologías ágiles y continuar fortaleciendo habilidades técnicas y de trabajo en equipo.}
+
+\makeatletter
+\@ifpackageloaded{moderncvstylebanking}{%
+\let\oldmakecvtitle\makecvtitle
+\renewcommand*{\makecvtitle}{%
+  {\centering\framebox{\includegraphics[width=\@photowidth]{\@photo}}\par\vspace{12pt}}%
+  \oldmakecvtitle%
+}%
+}{%
+}
+\makeatother
+
+\microtypesetup{expansion=false,protrusion=false}
+
+\begin{document}
+
+\makecvtitle
+
+
+\section{Educación}
+\cventry{2022--2025}{Ingeniería de Sistemas}{Universidad Tecnológica de Pereira}{}{}{8º semestre en curso. Formación en algoritmos, arquitectura de computadoras, bases de datos, redes y sistemas embebidos.}
+
+
+\section{Experiencia Académica}
+\cventry{2025}{Monitor Académico}{Universidad Tecnológica de Pereira}{}{}{Apoyo en asignaturas de programación y arquitectura de computadores: resolución de dudas, desarrollo de material auxiliar y acompañamiento a estudiantes.}
+
+
+\section{Habilidades Técnicas}
+\cvitem{Lenguajes}{Python, JavaScript, TypeScript, C, C++}
+\cvitem{Frameworks / Frontend}{Django, React, Tailwind CSS}
+\cvitem{DevOps / Contenedores}{Docker, Docker Compose, Kubernetes}
+\cvitem{Bases de datos}{SQLite, MySQL, PostgreSQL (básico)}
+\cvitem{Hardware / HDL}{Verilog, VHDL, FPGA (DE1-SoC), diseño digital}
+\cvitem{Herramientas}{Git, GitHub, Linux}
+
+
+\section{Proyectos Relevantes}
+\cvitem{GitHub}{\url{https://github.com/Juanes7222} — Repositorio con proyectos personales y académicos.}
+
+\cvitem{MapReduce}{Implementación y ejercicios sobre el modelo MapReduce. \\ \url{https://github.com/Juanes7222/MapReduce}}
+
+\cvitem{Kubernetes-SD}{Prácticas y experimentos con Kubernetes; incluye manifiestos y ejemplos de despliegue. \\ \url{https://github.com/Juanes7222/Kubernetes-SD}}
+
+\cvitem{Otros proyectos}{Procesamiento de imágenes en Python (FFT), aplicaciones web con Django, diseño digital en FPGA con Verilog/VHDL.}
+
+\cvitem{Contribuciones}{RiscVSiriusStudio — Contribuciones al proyecto de arquitectura y herramientas para RISC-V. \\ \url{https://github.com/LabSirius/RiscVSiriusStudio}}
+
+
+\section{Formación Complementaria}
+\cventry{2025}{Diplomado en Responsabilidad Social}{Universidad Tecnológica de Pereira}{}{}{Curso y actividades relacionadas con responsabilidad social universitaria.}
+
+\cventry{2024--2025}{Mentorías de habilidades blandas}{Banco de Bogotá}{Programa de beca}{}{Participación en talleres de liderazgo, comunicación asertiva y trabajo en equipo.}
+
+
+\section{Habilidades Blandas}
+\cvitem{Pensamiento analítico}{Alta capacidad para verificar, revisar y asegurar la calidad del trabajo con enfoque riguroso.}
+\cvitem{Autocontrol}{Mantengo estabilidad emocional y orden incluso bajo presión.}
+\cvitem{Comunicación}{Explico ideas técnicas de forma clara, respetuosa y estructurada.}
+\cvitem{Trabajo en equipo}{Colaboración armónica, orientada a soluciones prácticas y eficientes.}
+\cvitem{Responsabilidad}{Cumplimiento de compromisos, confiabilidad y atención al detalle.}
+\cvitem{Organización}{Planificación, priorización y ejecución disciplinada de tareas.}
+\cvitem{Prudencia}{Toma de decisiones consciente, evaluando riesgos y escenarios posibles.}
+\cvitem{Aprendizaje}{Adaptabilidad a nuevas tecnologías y mejora continua.}
+\cvitem{Pruebas DISC}{\href{https://drive.google.com/file/d/1jkTzgjt8AS6A15DcztzRoxmq90OAagMo/view?usp=sharing}{Ver resultados completos}}
+
+\section{Idiomas}
+\cvitem{Español}{Nativo}
+\cvitem{Inglés}{Intermedio (lectura de documentación técnica y comunicación básica)}
+
+\end{document}
