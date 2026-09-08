@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "review-resume": {
+      "source": "phuryn/pm-skills",
+      "sourceType": "github",
+      "skillPath": "pm-toolkit/skills/review-resume/SKILL.md",
+      "computedHash": "c5278789e6491dd276de8dbc091e4823a0ab8b4d143c68af0a72a1e099b6a3e7"
+    }
+  }
+}

@@ -1,105 +1,209 @@
-% Currículum actualizado — Juan Esteban Cardona Blandón
+% ============================================================
+%  CV — Juan Esteban Cardona Blandón  — VERSIÓN 4 (FINAL)
+%
+%  HISTORIAL DE FIXES:
+%  v1 → \phone[mobile] / \social crashean con moderncv 2.4.1
+%  v2 → \phone sin [mobile] sigue crasheando (\collectionadd bug)
+%  v3 → se eliminó \phone y \social, pero faltaba \microtypesetup
+%  v4 → añade \microtypesetup{expansion=false,protrusion=false}
+%       que estaba en el CV original y resuelve:
+%       "pdfTeX error: auto expansion is only possible with scalable fonts"
+%       moderncv carga microtype internamente; microtype intenta expandir
+%       los iconos bitmap de fontawesome5, lo cual falla en pdflatex.
+%       Deshabilitar expansion+protrusion elimina el error.
+% ============================================================
+
 \documentclass[11pt,a4paper,sans]{moderncv}
 
-% Estilo y color
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
 \moderncvstyle{banking}
 \moderncvcolor{blue}
 
-% Márgenes
-\usepackage[scale=0.8]{geometry}
-\usepackage{graphicx}
-\usepackage{import}
-\usepackage{booktabs}
-\usepackage{xcolor}
-\usepackage{tabularx}
-\usepackage[export]{adjustbox}
-\usepackage[hidelinks]{hyperref}
-\usepackage[spanish]{babel}
+\usepackage[top=1.5cm, bottom=1.5cm, left=1.8cm, right=1.8cm]{geometry}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue,
-    citecolor=blue
-}
-\setlength{\footskip}{136.00005pt}
-
-% Datos personales
-\name{Juan Esteban}{Cardona Blandón}
-\title{Hoja de Vida}
-\photo[64pt][0.6pt]{photo}
-\address{Pereira, Colombia}{}{}
-\email{juan.cardona13@utp.edu.co}
-\extrainfo{+57 3012213085 \textbullet{} C.C. 1113858851 \textbullet{} Fecha de nacimiento: 3 de septiembre de 2004}
-
-\quote{Estudiante de Ingeniería de Sistemas en la Universidad Tecnológica de Pereira, con experiencia práctica en desarrollo de software (Python, JavaScript/TypeScript, React, Tailwind), despliegue y orquestación de contenedores (Docker, Kubernetes) y diseño digital con lenguajes HDL para FPGA. Interesado en prácticas profesionales donde pueda aportar en proyectos reales, aprender metodologías ágiles y continuar fortaleciendo habilidades técnicas y de trabajo en equipo.}
-
-\makeatletter
-\@ifpackageloaded{moderncvstylebanking}{%
-\let\oldmakecvtitle\makecvtitle
-\renewcommand*{\makecvtitle}{%
-  {\centering\framebox{\includegraphics[width=\@photowidth]{\@photo}}\par\vspace{12pt}}%
-  \oldmakecvtitle%
-}%
-}{%
-}
-\makeatother
-
+% FIX CRÍTICO: deshabilitar font expansion de microtype
+% moderncv carga microtype; microtype falla al intentar expandir
+% los glifos no-escalables de fontawesome5 en pdflatex.
 \microtypesetup{expansion=false,protrusion=false}
 
-\begin{document}
+% ATS-safe
+\pdfgentounicode=1
+\input{glyphtounicode}
 
+\usepackage[spanish]{babel}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
+
+\setlength{\footskip}{70pt}
+
+% ============================================================
+%  DATOS DE CONTACTO
+%  \phone y \social ELIMINADOS (bug \collectionadd + hyperref).
+%  Teléfono y GitHub en \extrainfo, que usa \def simple.
+% ============================================================
+\name{Juan Esteban}{Cardona Blandón}
+\title{Estudiante de Ingeniería de Sistemas \textperiodcentered{} Full-Stack}
+\address{Pereira, Colombia}{}{}
+\email{juan.cardona13@utp.edu.co}
+\extrainfo{%
+  +57 301 221 3085%
+  \quad\textbullet\quad%
+  \href{https://github.com/Juanes7222}{github.com/Juanes7222}%
+}
+
+\quote{%
+  Estudiante de Ingeniería de Sistemas con experiencia práctica en
+  desarrollo Full-Stack y sistemas embebidos. He desarrollado y
+  desplegado aplicaciones web y móviles con React, NestJS, TypeScript,
+  Docker y Kubernetes, además de proyectos de arquitectura de
+  computadores y FPGA con Verilog. %
+}
+
+% ============================================================
+\begin{document}
 \makecvtitle
 
+% ============================================================
+\section{Experiencia en Desarrollo y Proyectos}
 
+\cventry{2026}
+  {Desarrollador Full-Stack}
+  {Pharmacy System - POS local-first para Droguería (DIAN)}
+  {}{}
+  {\begin{itemize}
+     \item Diseñé backend modular con NestJS, PostgreSQL y Prisma
+           (10 dominios, 60+ modelos) con autenticación JWT, RBAC y
+           auditoría, en monorepo Turborepo\,/\,pnpm con tipos y
+           validación compartidos (TypeScript\,/\,Zod).
+     \item Implementé inventario por lotes (FIFO, vencimientos), ventas POS,
+           turnos de caja y facturación fiscal DIAN con modo contingencia
+           y sincronización offline multi-terminal.
+   \end{itemize}
+   \small\href{https://github.com/Juanes7222/drugstore-project}{github.com/Juanes7222/drugstore-project}}
+
+\cventry{2026}
+  {Desarrollador Full-Stack \& DevOps}
+  {La Voz de la Verdad - Ecosistema de Radio en Producción}
+  {}{}
+  {\begin{itemize}
+     \item Desarrollé un monorepo con Turborepo que integra API REST
+           (Express\,/\,TypeScript), aplicación web (React\,/\,Vite) y app
+           móvil (React Native\,/\,Expo) publicada en Google Play Store
+           con usuarios reales.
+     \item Integré AzuraCast, detección de Facebook Live vía webhooks y
+           notificaciones en tiempo real con WebSockets, reduciendo la
+           intervención manual del operador de la emisora.
+     \item Desplegué la plataforma en VPS con nginx y PM2, manteniendo el
+           servicio disponible de forma continua para una audiencia activa.
+   \end{itemize}
+   \small\href{https://github.com/Juanes7222/Radio}{github.com/Juanes7222/Radio}}
+
+\cventry{2025}
+  {Desarrollador Full-Stack \& DevOps}
+  {TalentoNet - Sistema de Gestión de Talento Humano}
+  {}{}
+  {\begin{itemize}
+     \item Desarrollé el backend y frontend de una plataforma de gestión
+           de talento con NestJS, React y PostgreSQL, implementando
+           módulos de nómina, vacaciones y gestión documental con
+           mensajería asíncrona (RabbitMQ) y almacenamiento S3\,/\,MinIO.
+     \item Automaticé el despliegue con Docker, Kubernetes y GitHub Actions
+           (CI/CD) sobre una arquitectura de microservicios con
+           separación total de capas.
+   \end{itemize}
+   \small\href{https://github.com/Juanes7222/TalentoNet}{github.com/Juanes7222/TalentoNet}}
+
+\cventry{2024--2026}
+  {Desarrollador RTL\,/\,FPGA}
+  {Procesadores RISC-V RV32I\,/\,RV32IM sobre FPGA DE1-SoC}
+  {}{}
+  {\begin{itemize}
+     \item Implementé microarquitecturas monociclo (RV32I, Verilog) y
+           segmentada de 5 etapas (RV32IM, SystemVerilog) con detección de
+           hazards, forwarding y registros IF\,/\,ID\,/\,EX\,/\,MEM\,/\,WB
+           sobre Cyclone V.
+     \item Verifiqué con riscv-tests y testbenches cocotb contra modelo de
+           referencia en Python; medí Fmax, CPI efectivo, throughput y
+           utilización de recursos con protocolo homogéneo en
+           Quartus Prime.
+   \end{itemize}
+   \small\href{https://github.com/Juanes7222/riscv-rv32im-fpga}{github.com/Juanes7222/riscv-rv32im-fpga}}
+
+\cventry{2024}
+  {Contribuidor Open-Source}
+  {RiscVSiriusStudio -- LabSirius (UTP)}
+  {}{}
+  {\begin{itemize}
+     \item Contribuí al tooling del laboratorio LabSirius para diseño y
+           análisis de arquitecturas RISC-V en contexto de tesis.
+   \end{itemize}
+   \small\href{https://github.com/LabSirius/RiscVSiriusStudio}{github.com/LabSirius/RiscVSiriusStudio}}
+
+\cventry{2023--2025}
+  {Desarrollador}
+  {Proyectos adicionales de sistemas y computación}
+  {}{}
+  {\begin{itemize}
+     \item Comparé multiplicación de matrices secuencial vs.\ pthreads,
+           procesos, OpenMP y MPI en C (HPC-Matrix), con benchmarks y
+           análisis de speedup en clúster.
+     \item Implementé MapReduce en C; procesamiento de imágenes con FFT y
+           NumPy en Python; aplicaciones web con Django y despliegues
+           multi-réplica en Kubernetes.
+   \end{itemize}
+   \small\href{https://github.com/Juanes7222/HPC-Matrix}{github.com/Juanes7222/HPC-Matrix} \textbullet{} \small\href{https://github.com/Juanes7222}{github.com/Juanes7222}}
+
+% ============================================================
 \section{Educación}
-\cventry{2022--2025}{Ingeniería de Sistemas}{Universidad Tecnológica de Pereira}{}{}{8º semestre en curso. Formación en algoritmos, arquitectura de computadoras, bases de datos, redes y sistemas embebidos.}
+\cventry{2022--2026}
+  {Ingeniería de Sistemas y Computación}
+  {Universidad Tecnológica de Pereira}
+  {Pereira, Colombia}
+  {Décimo semestre en curso}
+  {Áreas relevantes: algoritmos, arquitectura de computadoras,
+   sistemas operativos, bases de datos..}
 
-
+% ============================================================
 \section{Experiencia Académica}
-\cventry{2025}{Monitor Académico}{Universidad Tecnológica de Pereira}{}{}{Apoyo en asignaturas de programación y arquitectura de computadores: resolución de dudas, desarrollo de material auxiliar y acompañamiento a estudiantes.}
 
+\cventry{2025}
+  {Monitor Académico}
+  {Universidad Tecnológica de Pereira}
+  {Pereira, Colombia}
+  {}
+  {\begin{itemize}
+     \item Apoyé asignaturas de programación y arquitectura de
+           computadores: resolución de dudas, elaboración de material
+           didáctico y acompañamiento a estudiantes de semestres menores.
+   \end{itemize}}
 
+% ============================================================
 \section{Habilidades Técnicas}
-\cvitem{Lenguajes}{Python, JavaScript, TypeScript, C, C++}
-\cvitem{Frameworks / Frontend}{Django, React, Tailwind CSS}
-\cvitem{DevOps / Contenedores}{Docker, Docker Compose, Kubernetes}
-\cvitem{Bases de datos}{SQLite, MySQL, PostgreSQL (básico)}
-\cvitem{Hardware / HDL}{Verilog, VHDL, FPGA (DE1-SoC), diseño digital}
-\cvitem{Herramientas}{Git, GitHub, Linux}
 
+\cvitem{Lenguajes}{Python, TypeScript, JavaScript, C, C++, Bash}
+\cvitem{Frontend}{React, React Native\,/\,Expo, Vite, Tailwind CSS}
+\cvitem{Backend}{NestJS, Node.js, Express, Django, Prisma, Zod}
+\cvitem{DevOps}{Docker, Kubernetes, GitHub Actions, nginx, PM2}
+\cvitem{Bases de datos}{PostgreSQL, MySQL, SQLite, MongoDB}
+\cvitem{Sistemas\,/\,HW}{Verilog, SystemVerilog, VHDL, FPGA (DE1-SoC), OpenMP, MPI, Linux}
+\cvitem{Herramientas}{Git, RabbitMQ, WebSockets, Turborepo}
 
-\section{Proyectos Relevantes}
-\cvitem{GitHub}{\url{https://github.com/Juanes7222} — Repositorio con proyectos personales y académicos.}
-
-\cvitem{MapReduce}{Implementación y ejercicios sobre el modelo MapReduce. \\ \url{https://github.com/Juanes7222/MapReduce}}
-
-\cvitem{Kubernetes-SD}{Prácticas y experimentos con Kubernetes; incluye manifiestos y ejemplos de despliegue. \\ \url{https://github.com/Juanes7222/Kubernetes-SD}}
-
-\cvitem{Otros proyectos}{Procesamiento de imágenes en Python (FFT), aplicaciones web con Django, diseño digital en FPGA con Verilog/VHDL.}
-
-\cvitem{Contribuciones}{RiscVSiriusStudio — Contribuciones al proyecto de arquitectura y herramientas para RISC-V. \\ \url{https://github.com/LabSirius/RiscVSiriusStudio}}
-
-
+% ============================================================
 \section{Formación Complementaria}
-\cventry{2025}{Diplomado en Responsabilidad Social}{Universidad Tecnológica de Pereira}{}{}{Curso y actividades relacionadas con responsabilidad social universitaria.}
 
-\cventry{2024--2025}{Mentorías de habilidades blandas}{Banco de Bogotá}{Programa de beca}{}{Participación en talleres de liderazgo, comunicación asertiva y trabajo en equipo.}
+\cventry{2024--2025}
+  {Programa de Beca -- Mentoría Profesional}
+  {Banco de Bogotá}
+  {}{}
+  {Talleres de liderazgo, comunicación asertiva y trabajo en equipo.}
 
-
-\section{Habilidades Blandas}
-\cvitem{Pensamiento analítico}{Alta capacidad para verificar, revisar y asegurar la calidad del trabajo con enfoque riguroso.}
-\cvitem{Autocontrol}{Mantengo estabilidad emocional y orden incluso bajo presión.}
-\cvitem{Comunicación}{Explico ideas técnicas de forma clara, respetuosa y estructurada.}
-\cvitem{Trabajo en equipo}{Colaboración armónica, orientada a soluciones prácticas y eficientes.}
-\cvitem{Responsabilidad}{Cumplimiento de compromisos, confiabilidad y atención al detalle.}
-\cvitem{Organización}{Planificación, priorización y ejecución disciplinada de tareas.}
-\cvitem{Prudencia}{Toma de decisiones consciente, evaluando riesgos y escenarios posibles.}
-\cvitem{Aprendizaje}{Adaptabilidad a nuevas tecnologías y mejora continua.}
-\cvitem{Pruebas DISC}{\href{https://drive.google.com/file/d/1jkTzgjt8AS6A15DcztzRoxmq90OAagMo/view?usp=sharing}{Ver resultados completos}}
-
+% ============================================================
 \section{Idiomas}
+
 \cvitem{Español}{Nativo}
-\cvitem{Inglés}{Intermedio (lectura de documentación técnica y comunicación básica)}
+\cvitem{Inglés}{B1 -- lectura fluida de documentación técnica
+                  y comunicación escrita básica}
 
 \end{document}
