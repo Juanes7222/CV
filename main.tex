@@ -17,11 +17,18 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{cmap}
+\usepackage{lmodern}
 
 \moderncvstyle{banking}
 \moderncvcolor{blue}
 
-\usepackage[top=1.5cm, bottom=1.5cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage[top=2cm, bottom=2cm, left=2.4cm, right=2.4cm]{geometry}
+
+% AIRE: interlineado + separación entre bullets (el CV se veía apretado)
+\linespread{1.08}
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=4pt,parsep=0pt,topsep=4pt,partopsep=0pt,leftmargin=*}
 
 % FIX CRÍTICO: deshabilitar font expansion de microtype
 % moderncv carga microtype; microtype falla al intentar expandir
@@ -54,11 +61,10 @@
 }
 
 \quote{%
-  Estudiante de Ingeniería de Sistemas con experiencia práctica en
-  desarrollo Full-Stack y sistemas embebidos. He desarrollado y
-  desplegado aplicaciones web y móviles con React, NestJS, TypeScript,
-  Docker y Kubernetes, además de proyectos de arquitectura de
-  computadores y FPGA con Verilog. %
+  Estudiante de Ingeniería de Sistemas (UTP, décimo semestre) enfocado en
+  desarrollo Full-Stack con React, NestJS, TypeScript y PostgreSQL.
+  Aplicaciones en producción web y móvil (Google Play Store),
+  Docker\,/\,Kubernetes y CI\,/\,CD con GitHub Actions. %
 }
 
 % ============================================================
@@ -68,28 +74,28 @@
 % ============================================================
 \section{Experiencia en Desarrollo y Proyectos}
 
-\cventry{2026}
+\cventry{2026 -- Presente}
   {Desarrollador Full-Stack}
-  {Pharmacy System - POS local-first para Droguería (DIAN)}
+  {Pharmacy System - POS local-first para Droguería}
   {}{}
   {\begin{itemize}
-     \item Diseñé backend modular con NestJS, PostgreSQL y Prisma
-           (10 dominios, 60+ modelos) con autenticación JWT, RBAC y
-           auditoría, en monorepo Turborepo\,/\,pnpm con tipos y
-           validación compartidos (TypeScript\,/\,Zod).
+     \item Backend modular con NestJS, PostgreSQL (consultas SQL) y Prisma:
+           10 dominios y 60+ modelos, con autenticación JWT, RBAC y auditoría.
+     \item Monorepo Turborepo\,/\,pnpm con tipos y validación compartidos
+           (TypeScript\,/\,Zod).
      \item Implementé inventario por lotes (FIFO, vencimientos), ventas POS,
            turnos de caja y facturación fiscal DIAN con modo contingencia
            y sincronización offline multi-terminal.
    \end{itemize}
-   \small\href{https://github.com/Juanes7222/drugstore-project}{github.com/Juanes7222/drugstore-project}}
+   \footnotesize\href{https://github.com/Juanes7222/drugstore-project}{github.com/Juanes7222/drugstore-project}}
 
-\cventry{2026}
+\cventry{2026 -- Presente}
   {Desarrollador Full-Stack \& DevOps}
   {La Voz de la Verdad - Ecosistema de Radio en Producción}
   {}{}
   {\begin{itemize}
-     \item Desarrollé un monorepo con Turborepo que integra API REST
-           (Express\,/\,TypeScript), aplicación web (React\,/\,Vite) y app
+     \item Desarrollé un monorepo con Turborepo que integra API REST con
+           Node.js\,/\,Express y TypeScript, aplicación web (React\,/\,Vite) y app
            móvil (React Native\,/\,Expo) publicada en Google Play Store
            con usuarios reales.
      \item Integré AzuraCast, detección de Facebook Live vía webhooks y
@@ -98,38 +104,34 @@
      \item Desplegué la plataforma en VPS con nginx y PM2, manteniendo el
            servicio disponible de forma continua para una audiencia activa.
    \end{itemize}
-   \small\href{https://github.com/Juanes7222/Radio}{github.com/Juanes7222/Radio}}
+   \footnotesize\href{https://github.com/Juanes7222/Radio}{github.com/Juanes7222/Radio}}
 
-\cventry{2025}
-  {Desarrollador Full-Stack \& DevOps}
-  {TalentoNet - Sistema de Gestión de Talento Humano}
-  {}{}
-  {\begin{itemize}
-     \item Desarrollé el backend y frontend de una plataforma de gestión
-           de talento con NestJS, React y PostgreSQL, implementando
-           módulos de nómina, vacaciones y gestión documental con
-           mensajería asíncrona (RabbitMQ) y almacenamiento S3\,/\,MinIO.
-     \item Automaticé el despliegue con Docker, Kubernetes y GitHub Actions
-           (CI/CD) sobre una arquitectura de microservicios con
-           separación total de capas.
-   \end{itemize}
-   \small\href{https://github.com/Juanes7222/TalentoNet}{github.com/Juanes7222/TalentoNet}}
+% \cventry{2025}
+%   {Desarrollador Full-Stack \& DevOps}
+%   {TalentoNet - Sistema de Gestión de Talento Humano}
+%   {}{}
+%   {\begin{itemize}
+%      \item Desarrollé el backend y frontend de una plataforma de gestión
+%            de talento con NestJS, React y PostgreSQL, implementando
+%            módulos de nómina, vacaciones y gestión documental con
+%            mensajería asíncrona (RabbitMQ) y almacenamiento S3\,/\,MinIO.
+%      \item Automaticé el despliegue con Docker, Kubernetes y GitHub Actions
+%            (CI/CD) sobre una arquitectura de microservicios con
+%            separación total de capas.
+%    \end{itemize}
+%    \footnotesize\href{https://github.com/Juanes7222/TalentoNet}{github.com/Juanes7222/TalentoNet}}
 
-\cventry{2024--2026}
-  {Desarrollador RTL\,/\,FPGA}
+\cventry{2026 -- Presente}
+  {Desarrollador RTL\,/\,FPGA (Proyecto académico)}
   {Procesadores RISC-V RV32I\,/\,RV32IM sobre FPGA DE1-SoC}
   {}{}
   {\begin{itemize}
-     \item Implementé microarquitecturas monociclo (RV32I, Verilog) y
-           segmentada de 5 etapas (RV32IM, SystemVerilog) con detección de
-           hazards, forwarding y registros IF\,/\,ID\,/\,EX\,/\,MEM\,/\,WB
-           sobre Cyclone V.
-     \item Verifiqué con riscv-tests y testbenches cocotb contra modelo de
-           referencia en Python; medí Fmax, CPI efectivo, throughput y
-           utilización de recursos con protocolo homogéneo en
-           Quartus Prime.
+     \item Implementé procesadores RISC-V RV32I (monociclo) y RV32IM
+           (pipeline de 5 etapas) en Verilog\,/\,SystemVerilog sobre FPGA
+           DE1-SoC, verificados con riscv-tests\,/\,cocotb y sintetizados
+           en Quartus Prime.
    \end{itemize}
-   \small\href{https://github.com/Juanes7222/riscv-rv32im-fpga}{github.com/Juanes7222/riscv-rv32im-fpga}}
+   \footnotesize\href{https://github.com/Juanes7222/riscv-rv32im-fpga}{github.com/Juanes7222/riscv-rv32im-fpga}}
 
 \cventry{2024}
   {Contribuidor Open-Source}
@@ -139,21 +141,20 @@
      \item Contribuí al tooling del laboratorio LabSirius para diseño y
            análisis de arquitecturas RISC-V en contexto de tesis.
    \end{itemize}
-   \small\href{https://github.com/LabSirius/RiscVSiriusStudio}{github.com/LabSirius/RiscVSiriusStudio}}
+   \footnotesize\href{https://github.com/LabSirius/RiscVSiriusStudio}{github.com/LabSirius/RiscVSiriusStudio}}
 
 \cventry{2023--2025}
   {Desarrollador}
   {Proyectos adicionales de sistemas y computación}
   {}{}
   {\begin{itemize}
-     \item Comparé multiplicación de matrices secuencial vs.\ pthreads,
-           procesos, OpenMP y MPI en C (HPC-Matrix), con benchmarks y
-           análisis de speedup en clúster.
-     \item Implementé MapReduce en C; procesamiento de imágenes con FFT y
-           NumPy en Python; aplicaciones web con Django y despliegues
-           multi-réplica en Kubernetes.
+     \item Desarrollé aplicaciones web con Django y despliegues
+           multi-réplica en Kubernetes; procesamiento de imágenes con FFT y
+           NumPy en Python.
+     \item Implementé MapReduce y multiplicación de matrices paralela en C
+           (pthreads, OpenMP, MPI) con benchmarks de speedup (HPC-Matrix).
    \end{itemize}
-   \small\href{https://github.com/Juanes7222/HPC-Matrix}{github.com/Juanes7222/HPC-Matrix} \textbullet{} \small\href{https://github.com/Juanes7222}{github.com/Juanes7222}}
+   \footnotesize\href{https://github.com/Juanes7222/HPC-Matrix}{github.com/Juanes7222/HPC-Matrix} \textbullet{} \footnotesize\href{https://github.com/Juanes7222}{github.com/Juanes7222}}
 
 % ============================================================
 \section{Educación}
@@ -162,8 +163,8 @@
   {Universidad Tecnológica de Pereira}
   {Pereira, Colombia}
   {Décimo semestre en curso}
-  {Áreas relevantes: algoritmos, arquitectura de computadoras,
-   sistemas operativos, bases de datos..}
+  {Áreas relevantes: algoritmos, bases de datos, sistemas operativos,
+   redes y desarrollo de software.}
 
 % ============================================================
 \section{Experiencia Académica}
@@ -185,10 +186,10 @@
 \cvitem{Lenguajes}{Python, TypeScript, JavaScript, C, C++, Bash}
 \cvitem{Frontend}{React, React Native\,/\,Expo, Vite, Tailwind CSS}
 \cvitem{Backend}{NestJS, Node.js, Express, Django, Prisma, Zod}
-\cvitem{DevOps}{Docker, Kubernetes, GitHub Actions, nginx, PM2}
+\cvitem{DevOps}{Docker, Kubernetes, nginx, PM2}
 \cvitem{Bases de datos}{PostgreSQL, MySQL, SQLite, MongoDB}
-\cvitem{Sistemas\,/\,HW}{Verilog, SystemVerilog, VHDL, FPGA (DE1-SoC), OpenMP, MPI, Linux}
-\cvitem{Herramientas}{Git, RabbitMQ, WebSockets, Turborepo}
+\cvitem{Sistemas\,/\,HW}{Verilog, FPGA (DE1-SoC), Linux}
+\cvitem{Herramientas}{Git, RabbitMQ, WebSockets, Turborepo, Vitest}
 
 % ============================================================
 \section{Formación Complementaria}
